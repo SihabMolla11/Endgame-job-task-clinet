@@ -1,9 +1,12 @@
 import { Link, NavLink } from "react-router-dom";
 import Logo from "./Logo";
-import SearchField from "./SearchField";
 import Avater from "./Avater";
+import { useContext } from "react";
+import { AuthContext } from "../../../AuthPorvider/AuthProvider";
 
 const NavBar = () => {
+  const { user } = useContext(AuthContext);
+
   const navItems = (
     <>
       <li>
@@ -25,21 +28,34 @@ const NavBar = () => {
       <li>
         <NavLink
           className="hover:border-b-2 border-[#6b5f56] hover:text-black"
+          to="/admission"
+        >
+          Admission
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          className="hover:border-b-2 border-[#6b5f56] hover:text-black"
+          to="/my-college"
+        >
+          My-College
+        </NavLink>
+      </li>
+      <li className=" md:hidden">
+        <NavLink
+          className="hover:border-b-2 border-[#6b5f56] hover:text-black"
           to="/Login"
         >
           Login
         </NavLink>
       </li>
-      <li>
+      <li className="md:hidden">
         <NavLink
           className="hover:border-b-2 border-[#6b5f56] hover:text-black"
           to="/Register"
         >
           Register
         </NavLink>
-      </li>
-      <li className=" md:hidden">
-        <SearchField />
       </li>
     </>
   );
@@ -82,13 +98,35 @@ const NavBar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          {/* search field and profile pic  */}
+          <div className="mr-5">
+            {user ? (
+              <button className=" btn border-2 border-green-500 hover:bg-green-500 bg-[#ff000000] text-neutral-600 hover:text-white font-bold">
+                Log Out
+              </button>
+            ) : (
+              <ul className="flex gap-6 text-neutral-600 font-medium">
+                <li>
+                  <NavLink
+                    className="hover:border-b-2 border-[#6b5f56] hover:text-black"
+                    to="/Login"
+                  >
+                    Login
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    className="hover:border-b-2 border-[#6b5f56] hover:text-black"
+                    to="/Register"
+                  >
+                    Register
+                  </NavLink>
+                </li>
+              </ul>
+            )}
+          </div>
 
           <div className="flex gap-2">
-            <div className="hidden md:block">
-              <SearchField />
-            </div>
-            <Avater/>
+            <Avater />
           </div>
         </div>
       </div>
