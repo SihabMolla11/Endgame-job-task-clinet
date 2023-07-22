@@ -1,5 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
 import Logo from "./Logo";
+import SearchField from "./SearchField";
+import Avater from "./Avater";
 
 const NavBar = () => {
   const navItems = (
@@ -36,6 +38,9 @@ const NavBar = () => {
           Register
         </NavLink>
       </li>
+      <li className=" md:hidden">
+        <SearchField />
+      </li>
     </>
   );
 
@@ -62,7 +67,7 @@ const NavBar = () => {
             </label>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-72"
             >
               {navItems}
             </ul>
@@ -77,7 +82,14 @@ const NavBar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <a className="btn">Button</a>
+          {/* search field and profile pic  */}
+
+          <div className="flex gap-2">
+            <div className="hidden md:block">
+              <SearchField />
+            </div>
+            <Avater/>
+          </div>
         </div>
       </div>
     </div>
