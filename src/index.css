@@ -6,7 +6,20 @@
   @apply max-w-[2520px] mx-auto xl:px-20 md:px-10 sm:px-2 px-4;
 }
 
-.active{
+.active {
   color: black;
   border-bottom: 2px solid #6b5f56;
 }
+
+.my-btn {
+  @apply btn border-2 border-[#ff8258] hover:bg-[#ff561e] bg-[#ff000000] text-neutral-600 hover:text-white font-bold;
+}
+
+.my-btn-small {
+  @apply btn btn-sm text-white bg-[#ff8258] hover:bg-[#ff561e];
+}
+.my-btn-primary {
+  @apply btn text-white bg-[#ff8258] hover:bg-[#ff561e];
+}
+
+

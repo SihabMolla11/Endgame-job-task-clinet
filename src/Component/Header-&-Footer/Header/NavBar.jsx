@@ -3,9 +3,19 @@ import Logo from "./Logo";
 import Avater from "./Avater";
 import { useContext } from "react";
 import { AuthContext } from "../../../AuthPorvider/AuthProvider";
+import { toast } from "react-hot-toast";
 
 const NavBar = () => {
-  const { user } = useContext(AuthContext);
+  const { user, logout } = useContext(AuthContext);
+
+  const handelLogOut = () => {
+    logout()
+      .then()
+      .catch((error) => {
+        console.log(error);
+        toast.success("LogOut successful");
+      });
+  };
 
   const navItems = (
     <>
@@ -100,11 +110,29 @@ const NavBar = () => {
         <div className="navbar-end">
           <div className="mr-5">
             {user ? (
-              <button className=" btn border-2 border-green-500 hover:bg-green-500 bg-[#ff000000] text-neutral-600 hover:text-white font-bold">
+              <button onClick={handelLogOut} className=" my-btn-small">
                 Log Out
               </button>
             ) : (
-              <ul className="flex gap-6 text-neutral-600 font-medium">
+              <button className="btn btn-sm text-white bg-[#309afd] hover:bg-[#0084ff]">
+                <Link to="/login">Login</Link>
+              </button>
+            )}
+          </div>
+
+          <div className="flex gap-2">
+            <Avater />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default NavBar;
+
+{
+  /* <ul className="flex gap-6 text-neutral-600 font-medium">
                 <li>
                   <NavLink
                     className="hover:border-b-2 border-[#6b5f56] hover:text-black"
@@ -121,17 +149,5 @@ const NavBar = () => {
                     Register
                   </NavLink>
                 </li>
-              </ul>
-            )}
-          </div>
-
-          <div className="flex gap-2">
-            <Avater />
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-export default NavBar;
+              </ul> */
+}
