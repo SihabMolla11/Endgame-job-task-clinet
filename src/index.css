@@ -16,7 +16,7 @@
 }
 
 .my-btn-small {
-  @apply btn btn-sm text-white bg-[#ff8258] hover:bg-[#ff561e];
+  @apply btn btn-sm text-white bg-[#296bfc] hover:bg-[#0051ff];
 }
 .my-btn-primary {
   @apply btn text-white bg-[#f5693a] hover:bg-[#ff4000];

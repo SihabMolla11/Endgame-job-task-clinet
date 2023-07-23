@@ -1,10 +1,8 @@
-import { useContext, useState } from "react";
+import {  useState } from "react";
 import { useEffect } from "react";
-import { AuthContext } from "../../AuthPorvider/AuthProvider";
 import CollegeCard from "../../Component/CollgetCard/CollegeCard";
 
 const Colleges = () => {
-  const { user } = useContext(AuthContext);
   const [colleges, setColleges] = useState([]);
 
   useEffect(() => {
