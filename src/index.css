@@ -12,7 +12,7 @@
 }
 
 .my-btn {
-  @apply btn border-2 border-[#ff8258] hover:bg-[#ff561e] bg-[#ff000000] text-neutral-600 hover:text-white font-bold;
+  @apply btn border-2 border-[#ff8258] hover:bg-[#ff561e] bg-[#ff000000] text-[#ffffff] hover:text-white font-bold;
 }
 
 .my-btn-small {

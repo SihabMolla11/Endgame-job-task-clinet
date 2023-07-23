@@ -8,6 +8,7 @@ import Admission from "../Pages/Admission/Admission";
 import MyCollege from "../Pages/My-college/MyCollege";
 import PrivateRoute from "./PrivateRoute";
 import MyProfile from "../Pages/MyProfile/MyProfile";
+import CollgetDetail from "../Component/CollgetCard/CollgetDetail";
 
 export const router = createBrowserRouter([
   {
@@ -41,6 +42,18 @@ export const router = createBrowserRouter([
             <MyProfile />
           </PrivateRoute>
         ),
+      },
+      {
+        path: "/college-detail/:id",
+        element: (
+          <PrivateRoute>
+            <CollgetDetail />
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(
+            `${import.meta.env.VITE_DATABASE_URL}/college-detail/${params.id}`
+          ),
       },
       {
         path: "/login",

@@ -16,19 +16,19 @@ const MyProfile = () => {
           <img src={image} className="w-full rounded-lg shadow-2xl" />
           <div className="w-full">
             <h1 className="text-lg md:text-4xl semibold">Name: {name}</h1>
-            <div className=" space-y-3 my-3">
-              <p className="flex items-center gap-2 font-bold text-xl ">
+            <div className=" space-y-5 my-5">
+              <p className="flex  gap-4 font-bold text-xl ">
                 <FaEnvelope className=" text-[#7070f5]" size={24} /> Email:{" "}
                 {email}
               </p>
-              <p className="flex items-center gap-2 font-bold text-xl ">
+              <p className="flex  gap-4 font-bold text-xl ">
                 <HiOutlineLocationMarker
                   className=" text-[#7070f5]"
                   size={24}
                 />
                 Address: {address}
               </p>
-              <p className="flex items-center gap-2 font-bold text-xl ">
+              <p className="flex  gap-4 font-bold text-xl ">
                 <FaUniversity className=" text-[#7070f5]" size={24} />
                 University: {university}
               </p>
