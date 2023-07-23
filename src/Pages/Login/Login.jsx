@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import GoogleLgon from "../../Component/SocialLogin/GoogleLgon";
 import { TbFidgetSpinner } from "react-icons/tb";
 import { useContext, useRef } from "react";
@@ -6,23 +6,26 @@ import { AuthContext } from "../../AuthPorvider/AuthProvider";
 import { toast } from "react-hot-toast";
 
 const Login = () => {
-  const { user, loading, setLoading, signIngUser, resetPassword } =
+  const { loading, setLoading, signIngUser, resetPassword } =
     useContext(AuthContext);
   const navigate = useNavigate();
+  const location = useLocation();
   const emailRef = useRef();
+  const from = location?.state?.from?.pathname || "/";
 
   const handelLogin = (event) => {
     event.preventDefault();
     const email = event.target.email.value;
     const password = event.target.password.value;
     signIngUser(email, password)
-      .then((result) => {
-        navigate("/");
+      .then(() => {
+        navigate(from, { replace: true });
         toast.success("user successfully login");
       })
       .catch((err) => {
         toast.error(err.message);
         console.log(err.message);
+        setLoading(false)
       });
   };
 
@@ -43,12 +46,12 @@ const Login = () => {
 
   return (
     <>
-      <div className="hero min-h-screen bg-base-200 py-10">
+      <div className="hero min-h-screen bg-base-200 md:py-10">
         <form
           onSubmit={handelLogin}
-          className="card flex-shrink-0 w-full max-w-xl p-10 shadow-2xl bg-base-100"
+          className="card flex-shrink-0 w-full max-w-xl p-2 md:p-10 shadow-2xl bg-base-100"
         >
-          <h2 className="text-center uppercase text-5xl">user login</h2>
+          <h2 className="text-center uppercase text-lg pt-5 md:text-5xl">user login</h2>
           <div className="card-body">
             <div className="form-control">
               <label className="label">

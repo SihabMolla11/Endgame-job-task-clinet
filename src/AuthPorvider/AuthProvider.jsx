@@ -20,7 +20,8 @@ const googleProvider = new GoogleAuthProvider();
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [loginUser, setLoginUser] = useState([])
 
   const createUser = (email, password) => {
     setLoading(true);
@@ -61,13 +62,20 @@ const AuthProvider = ({ children }) => {
       setLoading(false);
     });
     return () => {
-      return unsubscribe;
+      return unsubscribe();
     };
   }, []);
+
+  useEffect(()=>{
+    fetch(`${import.meta.env.VITE_DATABASE_URL}/user/${user?.email}`)
+    .then(res=>res.json())
+    .then(data=>setLoginUser(data))
+  },[user?.email])
 
   const authInfo = {
     user,
     loading,
+    loginUser,
     setUser,
     setLoading,
     createUser,

@@ -1,15 +1,17 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import GoogleLgon from "../../Component/SocialLogin/GoogleLgon";
 import { TbFidgetSpinner } from "react-icons/tb";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { AuthContext } from "../../AuthPorvider/AuthProvider";
 import { toast } from "react-hot-toast";
+import { addUser } from "../../api/user";
 
 const Register = () => {
-  const { user, loading, setLoading, createUser, updateUserProfile } =
+  const { loading, setLoading, createUser, updateUserProfile } =
     useContext(AuthContext);
-
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = location?.state?.from?.pathname || "/";
 
   const handelSignUp = (event) => {
     event.preventDefault();
@@ -32,10 +34,11 @@ const Register = () => {
         const photoUrl = data?.data?.display_url;
 
         createUser(email, password)
-          .then((user) => {
+          .then((result) => {
             updateUserProfile(name, photoUrl)
-              .then((result) => {
-                navigate("/");
+              .then(() => {
+                addUser(result.user);
+                navigate(from, { replace: true });
                 toast.success("User Login Successful");
                 setLoading(false);
               })
@@ -55,12 +58,12 @@ const Register = () => {
 
   return (
     <div>
-      <div className="hero min-h-screen bg-base-200 py-10">
+      <div className="hero min-h-screen bg-base-200 md:py-10">
         <form
           onSubmit={handelSignUp}
-          className="card flex-shrink-0 w-full max-w-xl p-10 shadow-2xl bg-base-100"
+          className="card flex-shrink-0 w-full max-w-xl p-2 md:p-10 shadow-2xl bg-base-100"
         >
-          <h2 className="text-center uppercase text-5xl">user Signup </h2>
+          <h2 className="text-center uppercase text-lg pt-5 md:text-5xl">user Signup </h2>
           <div className="card-body">
             <div className="form-control">
               <label className="label">

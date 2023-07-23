@@ -1,8 +1,9 @@
+import Loader from "../../Component/Loader/Loader";
 
 const Admission = () => {
     return (
         <div>
-            this is admission page
+            <Loader/>
         </div>
     );
 };

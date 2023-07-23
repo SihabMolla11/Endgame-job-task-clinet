@@ -4,9 +4,10 @@ import Avater from "./Avater";
 import { useContext } from "react";
 import { AuthContext } from "../../../AuthPorvider/AuthProvider";
 import { toast } from "react-hot-toast";
+import LogOut from "../../LogOut/LogOut";
 
 const NavBar = () => {
-  const { user, logout } = useContext(AuthContext);
+  const { user, logout, loginUser } = useContext(AuthContext);
 
   const handelLogOut = () => {
     logout()
@@ -51,28 +52,36 @@ const NavBar = () => {
           My-College
         </NavLink>
       </li>
-      <li className=" md:hidden">
-        <NavLink
-          className="hover:border-b-2 border-[#6b5f56] hover:text-black"
-          to="/Login"
-        >
-          Login
-        </NavLink>
-      </li>
-      <li className="md:hidden">
-        <NavLink
-          className="hover:border-b-2 border-[#6b5f56] hover:text-black"
-          to="/Register"
-        >
-          Register
-        </NavLink>
-      </li>
+      {user ? (
+        <span className="md:hidden">
+            <LogOut />
+        </span>
+      ) : (
+        <>
+          <li className=" md:hidden">
+            <NavLink
+              className="hover:border-b-2 border-[#6b5f56] hover:text-black"
+              to="/Login"
+            >
+              Login
+            </NavLink>
+          </li>
+          <li className="md:hidden">
+            <NavLink
+              className="hover:border-b-2 border-[#6b5f56] hover:text-black"
+              to="/Register"
+            >
+              Register
+            </NavLink>
+          </li>
+        </>
+      )}
     </>
   );
 
   return (
     <div className="my-container">
-      <div className="navbar">
+      <div className="navbar h-20">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -108,22 +117,26 @@ const NavBar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <div className="mr-5">
+          <div className="mr-10 hidden md:block">
             {user ? (
-              <button onClick={handelLogOut} className=" my-btn-small">
-                Log Out
-              </button>
+              <LogOut />
             ) : (
-              <button className="btn btn-sm text-white bg-[#309afd] hover:bg-[#0084ff]">
+              <button className="btn  text-white bg-[#309afd] hover:bg-[#0084ff]">
                 <Link to="/login">Login</Link>
               </button>
             )}
           </div>
 
-          <div className="flex gap-2">
+          <div className=" flex flex-col  justify-center items-center">
             <Avater />
+            <Link to="profile" className="cursor-pointer">
+              <p className="font-semibold text-neutral-500 hover:text-black">
+                {loginUser?.name}
+              </p>
+            </Link>
           </div>
         </div>
+        {}
       </div>
     </div>
   );
