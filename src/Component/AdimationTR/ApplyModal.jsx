@@ -1,12 +1,10 @@
-import { useContext} from "react";
+import { useContext } from "react";
 import { toast } from "react-hot-toast";
 import { AuthContext } from "../../AuthPorvider/AuthProvider";
 import { ImSpinner9 } from "react-icons/im";
 
 const ApplyModal = ({ college }) => {
   const { loading, setLoading, user } = useContext(AuthContext);
-
-
 
   const handelApply = (event) => {
     event.preventDefault;
@@ -58,6 +56,10 @@ const ApplyModal = ({ college }) => {
             setLoading(false);
           });
       });
+  };
+
+  const handelTest = () => {
+    console.log(college.college_name); 
   };
 
   return (
@@ -179,6 +181,7 @@ const ApplyModal = ({ college }) => {
               />
             )}
           </form>
+          <button onClick={handelTest}>afsdf</button>
           <div className="modal-action">
             <label htmlFor="my_modal_6" className="my-btn-blue">
               Close!

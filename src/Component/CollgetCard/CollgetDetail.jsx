@@ -8,6 +8,7 @@ const CollgetDetail = () => {
   const {
     college_name,
     admission_date,
+    admission_date_end,
     college_rating,
     detail,
     events,
@@ -24,9 +25,10 @@ const CollgetDetail = () => {
       </div>
       <div className=" flex gap-24 justify-between flex-col md:flex-row mt-10">
         <div className="w-full">
-          <p className="text-lg font-semibold">
-            AdmissionDate: {admission_date}
-          </p>
+          <div className="text-lg font-semibold ">
+            <p className="text-green-600">Admission Start date: {admission_date},</p>
+            <p className="text-red-600">Admission End date: {admission_date_end}</p>
+          </div>
           <div className=" flex flex-col md:flex-row justify-between mt-6 gap-16">
             <div className="w-full">
               <h3 className="text-lg font-bold">College Events:</h3>

@@ -7,6 +7,7 @@ const CollegeCard = ({ college }) => {
   const {
     college_name,
     admission_date,
+    admission_date_end,
     college_rating,
     image,
     research_count,
@@ -26,7 +27,8 @@ const CollegeCard = ({ college }) => {
         <div className=" space-y-5 p-4 items-center text-white  ">
           <h2 className=" text-2xl font-semibold">{college_name}</h2>
           <div>
-            <p>Admission date: {admission_date}</p>
+            <p>Admission Start Date: {admission_date}</p>
+            <p>Admission End Date: {admission_date_end}</p>
             <p>Number of research: {research_count}</p>
             <p className="flex items-center">
               College Ration:{" "}

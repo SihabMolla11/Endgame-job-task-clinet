@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import ApplyModal from "./ApplyModal";
 import { AuthContext } from "../../AuthPorvider/AuthProvider";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const AdmitionTableRow = ({ college }) => {
   const { user } = useContext(AuthContext);
@@ -40,14 +41,18 @@ const AdmitionTableRow = ({ college }) => {
         </td>
         <td>
           <div>
-
-              {
-                myCollege.email === user?.email ? <button className="my-btn-small" onClick={handelAlartMessage}>
-                Apply
-              </button> : <label htmlFor="my_modal_6" className="my-btn-small">
-                Apply
-              </label>
-              }
+            {myCollege.email === user?.email ? (
+              <button className="my-btn-small" onClick={handelAlartMessage}>
+                Apply now
+              </button>
+            ) : (
+              <Link
+                className="my-btn-small"
+                to={`/college-apply-form/${college?._id}`}
+              >
+                APPly Now
+              </Link>
+            )}
           </div>
         </td>
         <ApplyModal college={college} />
@@ -57,3 +62,9 @@ const AdmitionTableRow = ({ college }) => {
 };
 
 export default AdmitionTableRow;
+
+{
+  /* <label htmlFor="my_modal_6" className="my-btn-small">
+                Apply
+              </label> */
+}

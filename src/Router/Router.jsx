@@ -9,6 +9,7 @@ import MyCollege from "../Pages/My-college/MyCollege";
 import PrivateRoute from "./PrivateRoute";
 import MyProfile from "../Pages/MyProfile/MyProfile";
 import CollgetDetail from "../Component/CollgetCard/CollgetDetail";
+import ApplyForm from "../Component/AdimationTR/ApplyForm";
 
 export const router = createBrowserRouter([
   {
@@ -52,6 +53,18 @@ export const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <CollgetDetail />
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(
+            `${import.meta.env.VITE_DATABASE_URL}/college-detail/${params.id}`
+          ),
+      },
+      {
+        path: "/college-apply-form/:id",
+        element: (
+          <PrivateRoute>
+            <ApplyForm />
           </PrivateRoute>
         ),
         loader: ({ params }) =>
