@@ -1,10 +1,12 @@
-import { useContext } from "react";
+import { useContext} from "react";
 import { toast } from "react-hot-toast";
 import { AuthContext } from "../../AuthPorvider/AuthProvider";
 import { ImSpinner9 } from "react-icons/im";
 
 const ApplyModal = ({ college }) => {
-  const { loading, setLoading } = useContext(AuthContext);
+  const { loading, setLoading, user } = useContext(AuthContext);
+
+
 
   const handelApply = (event) => {
     event.preventDefault;
@@ -120,6 +122,8 @@ const ApplyModal = ({ college }) => {
                 type="email"
                 name="email"
                 placeholder="Inter your email"
+                defaultValue={user?.email}
+                readOnly
                 required
                 className="input input-bordered"
               />
