@@ -10,11 +10,13 @@ import PrivateRoute from "./PrivateRoute";
 import MyProfile from "../Pages/MyProfile/MyProfile";
 import CollgetDetail from "../Component/CollgetCard/CollgetDetail";
 import ApplyForm from "../Component/AdimationTR/ApplyForm";
+import ErrorPage from "../Pages/Errorpage/ErrorPage";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <Main />,
+    errorElement:<ErrorPage/>,
     children: [
       {
         path: "/",

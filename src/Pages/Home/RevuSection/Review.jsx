@@ -9,7 +9,7 @@ const Review = ({ review }) => {
     <>
       <div className="card w-full bg-base-100 shadow-xl">
         <figure>
-          <img src={collegeImage} alt="Shoes" />
+          <img src={collegeImage} alt="Shoes" className=" w-full h-56" />
         </figure>
         <div className="card-body">
           <h2 className="card-title">
@@ -23,7 +23,7 @@ const Review = ({ review }) => {
               <img
                 src={fdImage}
                 alt=""
-                className="w-14 rounded-full border-2 border-blue-600"
+                className="w-14 h-14 rounded-full border-2 border-blue-600"
               />
               <p className=" font-semibold">{fdName}</p>
             </div>
