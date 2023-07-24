@@ -25,8 +25,8 @@ const CollegeSection = () => {
         subTitle="Here are Show Some Popular Classes"
       />
       <div className="mt-10">
-        <div className=" bg-[#55617e] text-white my-2 rounded-md flex h-14  items-center justify-between px-10">
-          <h2 className=" text-2xl capitalize font-bold p-2">
+        <div className=" bg-[#55617e] text-white my-2 rounded-md flex py-3 flex-col md:flex-row  items-center justify-between  md:px-10">
+          <h2 className=" text-lg md:text-2xl capitalize font-bold p-2">
             search College by College name
           </h2>
 
@@ -36,7 +36,7 @@ const CollegeSection = () => {
                 type="text"
                 ref={searchRef}
                 placeholder="Search…"
-                className="input input-bordered"
+                className="input input-bordered w-32 md:w-full"
               />
               <button onClick={handelClick} className="btn btn-square">
                 <svg
